@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="table.css">
+    <script src="table.js" defer></script>
+    <title>Weekly Table</title>
+</head>
+<body>
+
+    <h3 class="print-button" onclick="window.print();">
+        <img src="printer.png" alt="Printer Icon" class="print-icon">
+        <span>Print</span>
+    </h3>
+        <h5 id="tableTitle"></h5>
+    <table id="weeklyTable">
+        <thead>
+            <tr>
+                <th id="currDate"></th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+    <button class="btn" id="goBackk" style="margin-left: 600px; margin-top: 40px;" onclick="window.location.href='/To-Do-List/Table/weekly.html'">Go Back</button>
+
+    <script>
+        function date() {
+            const currentTime = new Date();
+            let day = currentTime.getDate();
+            let month = currentTime.getMonth() + 1;
+            let year = currentTime.getFullYear();
+            let fullDate = `Current Date: ${month}-${day}-${year}`;
+            document.getElementById("currDate").innerHTML = fullDate;
+        }
+
+        function loadTableData() {
+            var tasks = JSON.parse(localStorage.getItem('tasks'));
+            if (tasks) {
+                tasks.forEach(function(taskData) {
+                    var tr = document.createElement('tr');
+                    var th = document.createElement('th');
+                    th.setAttribute('scope', 'row');
+                    th.innerHTML = taskData.taskName;
+                    tr.appendChild(th);
+
+                    for (let i = 0; i < 7; i++) {
+                        var td = document.createElement('td');
+                        td.innerHTML = "<input type='checkbox' style='padding: 20px; width: 20px; height:20px;'>";
+                        const checkbox = td.querySelector('input[type="checkbox"]');
+                        checkbox.checked = taskData.checkboxes[i];
+                        // Allow the checkbox to be checked/un-checked
+                        td.addEventListener('click', function() {
+                            checkbox.checked = !checkbox.checked;
+                        });
+                        checkbox.addEventListener('click', function(event) {
+                            event.stopPropagation();
+                        });
+                        tr.appendChild(td);
+                    }
+
+                    document.querySelector('#weeklyTable tbody').appendChild(tr);
+                });
+            }
+        }
+
+        window.onload = function() {
+    loadTableData();
+    date();
+    var tableTitle = localStorage.getItem('tableName');
+    if (tableTitle) {
+        document.getElementById('tableTitle').textContent = tableTitle;
+    }
+};
+
+  
+    </script>
+</body>
+</html>

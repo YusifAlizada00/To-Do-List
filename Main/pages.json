@@ -1,0 +1,45 @@
+{
+    "menuItems" : 
+    {
+        "All" :
+        {
+            "title" : "All",
+            "href" : "/To-Do-List/Main/all.php"
+        },
+        "Work" :
+        {
+            "title" : "Work",
+            "href" : "/To-Do-List/Main/work.php"
+        },
+        "Personal" :
+        {
+            "title" : "Personal",
+            "href" : "/To-Do-List/Main/personal.php"
+        },
+        "Sport" :
+        {
+            "title" : "Sport",
+            "href" : "/To-Do-List/Main/sport.php"
+        },
+        "Special" :
+        {
+            "title" : "Special",
+            "href" : "/To-Do-List/Main/special.php"
+        },
+        "Birthday" :
+        {
+            "title" : "Birthday",
+            "href" : "/To-Do-List/Main/birthday.php"
+        },
+        "WishList" :
+        {
+            "title" : "WishList",
+            "href" : "/To-Do-List/Main/wishList.php"
+        },
+        "Notes" :
+        {
+            "title" : "Notes",
+            "href" : "/To-Do-List/Main/Notes.php"
+        }
+    }
+}

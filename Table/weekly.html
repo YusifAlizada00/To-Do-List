@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="table.css">
+    <script src="table.js" defer></script>
+    <title>Weekly Table</title>
+</head>
+<body>
+    <form action="javascript:void(0)" id="taskForm">
+        <h2>Enter Tasks to Generate</h2>
+        <input type="text" id="tableName" name="enterName" placeholder="Enter Table Name">
+        <button id="addName" class="addName" type="button" onclick="tableFunctions.generateName()">Confirm</button>
+        <input type="text" id="task" name="enterTask" placeholder="Enter Task">
+        <button id="addTask" type="button" onclick="tableFunctions.addTask()">Add Task</button>
+    </form>
+
+    <h5 id="tableTitle"></h5>
+    <table id="weeklyTable">
+        <thead>
+            <tr>
+                <th id="currDate"></th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- New rows will be appended here -->
+        </tbody>
+    </table>
+    <br><br><br>
+    <button class="save" type="button" onclick="tableFunctions.saveTableData()">Save and Finish</button>
+
+    <script>
+        var tableFunctions = {
+            generateName: function() {
+            var addName = document.getElementById('tableName');
+            var tableTitle = document.getElementById('tableTitle');
+            if (addName.value.trim() !== "") {
+                tableTitle.textContent = addName.value.trim();
+                // Save the table name to localStorage
+                localStorage.setItem('tableName', addName.value.trim());
+            } else {
+                alert("Please enter Table Name");
+            }
+        },
+            addTask: function() {
+                var enterTask = document.getElementById('task').value;
+
+                if (enterTask.trim() !== "") {
+                    var tr = document.createElement('tr');
+
+                    var th = document.createElement('th');
+                    th.setAttribute('scope', 'row');
+                    th.innerHTML = enterTask;
+                    tr.appendChild(th);
+
+                    for (let i = 0; i < 7; i++) {
+                        var td = document.createElement('td');
+                        td.innerHTML = "<input type='checkbox' style='padding: 20px; width: 20px; height:20px;'>";
+                        const checkbox = td.querySelector('input[type="checkbox"]');
+                        td.addEventListener('click', function() {
+                            checkbox.checked = !checkbox.checked;
+                        });
+                        checkbox.addEventListener('click', function(event) {
+                            event.stopPropagation();
+                        });
+                        tr.appendChild(td);
+                    }
+
+                    var removeButtonCell = document.createElement('td');
+                    var removeButton = document.createElement('button');
+                    removeButton.innerHTML = '-';
+                    removeButton.classList.add('remove-row');
+                    removeButton.addEventListener('click', function() {
+                        tableFunctions.removeRow(tr);
+                    });
+                    removeButtonCell.appendChild(removeButton);
+                    tr.appendChild(removeButtonCell);
+
+                    document.querySelector('#weeklyTable tbody').appendChild(tr);
+
+                    document.getElementById('task').value = "";
+                    document.getElementById('task').focus(); // Focus back on input field
+                } else {
+                    alert("Please enter a task");
+                }
+            },
+
+            removeRow: function(row) {
+                row.remove();
+            },
+
+            date: function() {
+                const currentTime = new Date();
+                let day = currentTime.getDate();
+                let month = currentTime.getMonth() + 1;
+                let year = currentTime.getFullYear();
+                let fullDate = `Current Date: ${month}-${day}-${year}`;
+                document.getElementById("currDate").innerHTML = fullDate;
+            },
+
+            saveTableData: function() {
+                var tasks = [];
+                var rows = document.querySelectorAll('#weeklyTable tbody tr');
+                rows.forEach(function(row) {
+                    var taskName = row.querySelector('th').innerHTML;
+                    var checkboxes = row.querySelectorAll('input[type="checkbox"]');
+                    var taskData = {
+                        taskName: taskName,
+                        checkboxes: []
+                    };
+                    checkboxes.forEach(function(checkbox) {
+                        taskData.checkboxes.push(checkbox.checked);
+                    });
+                    tasks.push(taskData);
+                });
+
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                window.location.href = 'tablePage.html'; // Redirect to tablePage.html
+            }
+        };
+
+        document.getElementById('task').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                tableFunctions.addTask();
+            }
+        });
+        // Set current date on page load
+        window.onload = function() {
+            tableFunctions.date();
+        };
+    </script>
+</body>
+</html>

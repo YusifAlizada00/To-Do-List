@@ -1,0 +1,10 @@
+Menu button is not working in calendar.php -------------> DONE
+I need to add all headers in Tasks menu ----------------> 
+Calendar doesn't show the colorful background in days
+Eye icon is not working in either pages. ---------------> DONE
+Language options are not working except in tasks.php ---> DONE
+Background Color is transparent in calendar.php --------> DONE
+footer looks bad in calendar.php -----------------------> DONE
+how to make those headers and footers selected so that it will be easier to differentiate them ---> DONE
+Default should be all.php
+Your Notes doesnt change color
