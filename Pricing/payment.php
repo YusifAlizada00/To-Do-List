@@ -1,3 +1,13 @@
+<?php
+require $_SERVER["DOCUMENT_ROOT"] . '/To-Do-List/vendor/autoload.php';
+
+require $_SERVER["DOCUMENT_ROOT"] . '/To-Do-List/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"] . '/To-Do-List/');
+$dotenv->load();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,9 +56,9 @@
             }
         }
     </style>
-        <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-    <stripe-pricing-table pricing-table-id="prctbl_1QDwHXI1dLsmOTSwASNjHefi"
-    publishable-key="pk_test_51QDvzgI1dLsmOTSwNR2Xl9OByVOG1mOkqLlsIza1d5OM2dgxM5TPGUfrHgdtHHSqni6qbuD3sk6QJveULiLkjgFb00J9fyPyZa">
+        <script async src= <?php $_ENV["API_SRC"] ?>></script>
+    <stripe-pricing-table pricing-table-id= <?php $_ENV["PRICING_TABLE_ID"] ?>
+    publishable-key= <?php $_ENV["STRIPE_PUBLISHABLE_KEY"] ?> >
     </stripe-pricing-table>
     <div class="skip">
         <a href="/To-Do-List/Main/tasks.php" class="skipPage">Skip for now</a>
