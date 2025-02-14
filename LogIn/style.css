@@ -1,0 +1,356 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 1rem;
+    width: 90%;
+    max-width: 400px;
+    margin: 30px auto;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 1, 0.8);
+}
+
+form {
+    margin: 0 1rem;
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+input {
+    color: inherit;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #757575;
+    font-size: 14px;
+    padding-left: 1rem;
+}
+
+.input-group {
+    padding: 0.8% 0;
+    position: relative;
+}
+
+#emailIcon {
+    position: absolute;
+    margin-left: -5px;
+    top: 15%;
+    transform: translateY(-50%);
+    color: black;
+    font-size: 1rem;
+}
+
+.input-group i#toggleSignInPassword,
+.input-group i#toggleSignUpPassword,
+.input-group i#toggleForgotPassword,
+.input-group i#toggleConfirmPassword {
+    position: absolute;
+    right: -1.5rem;
+    bottom: -1.3rem;
+    top: 55%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: black;
+    font-size: 1rem;
+}
+
+input[type="password"].visible {
+    background-color: #f0f0f0;
+}
+
+input:focus {
+    background-color: transparent;
+    outline: transparent;
+    border-bottom: 2px solid hsl(327, 90%, 28%);
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+input:focus~label,
+input:not(:placeholder-shown)~label {
+    top: -2.5rem;
+    color: hsl(327, 90%, 28%);
+    font-size: 14px;
+}
+
+label {
+    color: #757575;
+    position: relative;
+    left: 1.2rem;
+    top: -1rem;
+    cursor: auto;
+    transition: 0.3s ease all;
+}
+
+.recover {
+    text-align: right;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.recover a {
+    text-decoration: none;
+    color: rgb(125, 125, 235);
+}
+
+.recover a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+.btn,
+.forgotBtn {
+    font-size: 1rem;
+    padding: 6px;
+    border-radius: 4px;
+    width: 100%;
+    outline: none;
+    color: white;
+    background: rgb(125, 125, 235);
+    cursor: pointer;
+    transition: 0.7s;
+    margin-bottom: 1.2rem;
+}
+
+.btn:hover {
+    background: rgb(140, 110, 200);
+}
+
+.or {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.icons {
+    text-align: center;
+}
+
+.icons i {
+    color: rgb(125, 125, 235);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border: 2px solid #dfe9f5;
+    margin: 0 12px;
+    transition: 1s;
+}
+
+.icons i:hover {
+    background-color: #07001f;
+    font-size: 1.4rem;
+    border: 2px solid rgb(125, 125, 235);
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 0.8rem;
+    font-weight: bold;
+}
+
+.links p.account {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.links a.signUpBtn {
+    text-decoration: none;
+    color: blue;
+    font-size: 0.9rem;
+}
+
+.links a.signUpBtn:hover {
+    text-decoration: underline;
+}
+
+button {
+    color: rgb(125, 125, 235);
+    border: none;
+    background-color: transparent;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+button:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+.goBack {
+    font-size: 1rem;
+    padding: 0.6rem;
+    border-radius: 4px;
+    width: 45%;
+    outline: none;
+    color: white;
+    background: rgb(125, 125, 235);
+    cursor: pointer;
+    transition: 0.7s;
+    text-decoration: none;
+    margin-left: 120px;
+}
+
+.goBack:hover,
+.forgotBtn:hover {
+    background: rgb(180, 160, 250);
+    transition: 0.3s;
+}
+
+.signInBtn,
+.signUpBtn {
+    color: blue;
+}
+
+.activation {
+    font-size: 1rem;
+    padding: 0.6rem;
+    margin-top: 1.2rem;
+    border-radius: 4px;
+    width: 45%;
+    outline: none;
+    color: white;
+    background: rgb(125, 125, 235);
+    cursor: pointer;
+    transition: 0.7s;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.activation:hover {
+    background: rgb(95, 95, 225);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    color: #fff;
+}
+
+.activation:active {
+    background-color: #325353;
+    transform: scale(0.95);
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        width: 90%;
+        padding: 0.8rem;
+        margin: 70px auto;
+        height: 70vh;
+    }
+    .container2{
+        width: 90%;
+        padding: 0.8rem;
+        margin: 70px auto;
+        height: 85vh;
+    }
+    .container3{
+        height: 50vh;
+    }
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .btn, .forgotBtn {
+        padding: 8px;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .icons i {
+        padding: 0.6rem 1rem;
+        font-size: 1.2rem;
+    }
+
+    .goBack {
+        width: 25%;
+    }
+
+    .links {
+        flex-direction: column;
+        gap: 0.4rem;
+        font-size: 16px;
+        margin-left: 20px;
+        display: inline-block;
+    }
+    .links p{
+        float: left;
+    }
+    .links a{
+        margin-left: 220px;
+        margin-top: -40px;
+        float: right;
+    }
+
+    .links p.account {
+        font-size: 0.8rem;
+    }
+
+    .container form {
+        margin: 0 1rem;
+    }
+
+    input {
+        font-size: 13px;
+        width: 100%;
+    }
+
+    #emailIcon {
+        font-size: 0.9rem;
+    }
+
+    .input-group {
+        padding: 0.6% 0;
+    }
+
+    .activation {
+        width: 10%;
+        float: right left;
+        font-size: 16px;
+    }
+    input, label {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    .container{
+        width: 75%;
+    }
+    .activation{
+        width: 60%;
+        align-items: center;
+        font-size: 15px;
+        padding: 0;
+        left: 10px;
+        float: left;
+    }
+    .goBack{
+        padding: 0;
+        align-items: center;
+        font-size: 15px;
+    }
+}

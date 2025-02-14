@@ -1,0 +1,3 @@
+1. When the email is not found it send me an email that it wasnt found but DONE
+I dont wanna see those emails over and over again and i am not sure what to do for now. 12/17/2024 DONE
+Forgot passoword container cannot be resized for mobile phones

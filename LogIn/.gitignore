@@ -1,0 +1,15 @@
+# Ignore environment variables
+.env
+
+# Ignore dependencies
+/vendor
+
+# Ignore system and log files
+node_modules/
+*.log
+.DS_Store
+
+# Ignore IDE/editor files (optional)
+.vscode/
+.idea/
+*.swp
